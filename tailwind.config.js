@@ -17,16 +17,20 @@ module.exports = {
       // => @media (min-width: 1024px) { ... }
     },
     extend: {
+      fontSize: {
+        '7.5xl': '5rem'
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
         primary: "rgb(0, 113, 227)",
+        darkGray: '#000029',
       },
       spacing: {
         "3.5": "0.85rem",
       },
       backgroundImage: {
-        'hero-pattern': "url('./assets/img/hero-img.png')",
+        'hero-pattern': "url('/img/hero-img.png')",
       }
     },
   },

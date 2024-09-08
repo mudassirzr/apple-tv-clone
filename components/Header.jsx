@@ -1,9 +1,9 @@
 import Link from "next/link";
-import AppleLogo from "@/app/assets/svgs/apple-logo";
+import AppleLogo from "@/public/svgs/apple-logo";
 import Container from "@/components/layout/Container";
 import { Children } from "react";
-import SearchIcon from "@/app/assets/svgs/search-icon";
-import BagIcon from "@/app/assets/svgs/bag-icon";
+import SearchIcon from "@/public/svgs/search-icon";
+import BagIcon from "@/public/svgs/bag-icon";
 
 export default function Header() {
   const links = [
@@ -68,7 +68,7 @@ export default function Header() {
     },
   ];
   return (
-    <header className="text-xs bg-white">
+    <header className="text-xs bg-white z-50">
       <Container>
         <nav>
           <ul className="flex justify-evenly">

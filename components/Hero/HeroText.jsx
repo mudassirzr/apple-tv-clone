@@ -1,15 +1,14 @@
 import Image from "next/image";
 import { useRef } from "react";
 
-export default function HeroText() {
-    const textRef = useRef()
+export default function HeroText({headlineRef}) {
   return (
     <div
       className={`flex items-center flex-col justify-end`}
-      ref={textRef}
+      ref={headlineRef}
     >
       <Image
-        className="mb-7"
+        className="mb-7 mx-auto"
         width={159}
         height={47}
         src="/img/hero-tv-4k.png"

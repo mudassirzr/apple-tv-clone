@@ -21,8 +21,16 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+      <link
+        rel="icon"
+        href="/favicon.svg"
+        type="image/svg"
+        // sizes="<generated>"
+      />
+      </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white`}
       >
         <Providers>{children}</Providers>
       </body>

@@ -24,4 +24,21 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+  .cls-1 {
+    fill: #1d1d1f;
+  }
+  .pause-icon::after {
+    content: "";
+    background-image: url("/svgs/pause.svg");
+    background-position: 20px 20px;
+    height: 20px;
+    width: 20px;
+  }
+  .play-icon::after {
+    content: "";
+    background-image: url("/svgs/play.svg");
+    background-position: 20px 20px;
+    height: 20px;
+    width: 20px;
+  }
 }

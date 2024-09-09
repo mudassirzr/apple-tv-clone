@@ -1,19 +1,16 @@
 import { Fragment, useCallback, useEffect } from "react";
 
-export default function HeroVideoImage() {
-  const checkVideoPosition = useCallback((e) => {
-    console.log(e);
-  }, []);
+export default function HeroVideoImage({imageRef}) {
   return (
-    <div id="textArea" onScroll={checkVideoPosition}>
+    <div id="textArea" className="bg-hero-pattern mx-auto bg-top bg-no-repeat bg-contain h-full transition-all">
       <video
-        className="w-full h-full"
+        ref={imageRef}
+        className="w-full h-full transition-all"
         src={"/video/apple-video.mp4"}
         loop
         muted
         autoPlay
       />
-      {/* <div className="h-[516px] w-[918px] bg-hero-pattern mx-auto bg-cover bg-center"></div> */}
     </div>
   );
 }

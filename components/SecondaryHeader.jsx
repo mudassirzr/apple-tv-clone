@@ -6,7 +6,7 @@ export default function SecondaryHeader() {
     <div className="sticky top-0 bg-white bg-opacity-80 backdrop-blur-lg backdrop-saturate-[180%] border-b border-b-darkGray z-50">
       <Container>
         <nav className="flex justify-between items-center text-xs">
-          <h1 className="pr-2 text-xl font-bold">Apple TV 4k</h1>
+          <a href="#" className="pr-2 text-xl font-bold">Apple TV 4k</a>
           <ul className="flex items-center">
             <li className="ml-5">
               <Link href="#" className="py-4 px-2 inline-block">

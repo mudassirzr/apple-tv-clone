@@ -3,7 +3,7 @@ import Container from "./layout/Container";
 
 export default function SecondaryHeader() {
   return (
-    <div className="sticky top-0 bg-white bg-opacity-80 backdrop-blur-lg backdrop-saturate-[180%] border-b border-b-darkGray z-50">
+    <div className="sticky top-0 bg-white bg-opacity-80 backdrop-blur-lg backdrop-saturate-[180%] border-b border-b-[rgb(211 211 212)] z-50">
       <Container>
         <nav className="flex justify-between items-center text-xs">
           <a href="#" className="pr-2 text-xl font-bold">Apple TV 4k</a>

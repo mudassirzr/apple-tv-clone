@@ -1,26 +1,23 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useRef } from "react";
 import { useParallax } from "react-scroll-parallax";
 import HeroText from "./HeroText";
 import HeroVideoImage from "./HeroVideoImage";
-
 export default function Hero() {
-  // const [showText, setShowText] = useState(false)
-  const [progress, setProgress] = useState(0);
   const textRef = useRef();
   const headlineRef = useRef();
   const imageRef = useRef();
   const buttonRef = useRef();
+  const wrapperRef = useRef
   const { ref } = useParallax({
-    speed: -10,
+    speed: -5,
     scale: [1.43, 0.55],
     translateY: [0, -18],
     onProgressChange: (progress) => {
       if (ref.current) {
         // set progress to CSS variable
-        ref.current.setAttribute("progress", progress);
         const pg = progress * 100;
         if (pg > 95) {
           textRef.current.style.setProperty("opacity", progress.toFixed(1));
@@ -56,10 +53,10 @@ export default function Hero() {
     }
   }, [imageRef, buttonRef]);
   return (
-    <section className="relative h-[3200px] bg-[#f5f5f7] -z-10 -mb-[500px]">
+    <section className="relative h-[3200px] bg-[#f5f5f7] z-0 -mb-[500px]">
       <div
         id="parallax-hero"
-        className="w-full -z-[1] sticky top-[96px]"
+        className="w-full sticky top-[96px]"
         ref={ref}
       >
         <div className="relative w-full border-solid border-8 border-black h-svh overflow-y-hidden">

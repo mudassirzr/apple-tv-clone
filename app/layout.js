@@ -22,15 +22,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-      <link
-        rel="icon"
-        href="/favicon.svg"
-        type="image/svg"
-        // sizes="<generated>"
-      />
+        <link
+          rel="icon"
+          href="/favicon.svg"
+          type="image/svg"
+        />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white relative overflow-y-auto overflow-x-hidden`}
       >
         <Providers>{children}</Providers>
       </body>

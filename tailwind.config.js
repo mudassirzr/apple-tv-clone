@@ -25,6 +25,7 @@ module.exports = {
         foreground: "var(--foreground)",
         primary: "rgb(0, 113, 227)",
         darkGray: '#000029',
+        textGray: '#86868b',
       },
       spacing: {
         "3.5": "0.85rem",

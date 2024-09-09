@@ -68,7 +68,7 @@ export default function Header() {
     },
   ];
   return (
-    <header className="text-xs bg-white z-50">
+    <header className="text-xs bg-white relative z-50">
       <Container>
         <nav>
           <ul className="flex justify-evenly">

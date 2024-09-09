@@ -1,3 +1,5 @@
+import Container from "../layout/Container";
+
 export default function ExperienceSection() {
   return (
     <Container>

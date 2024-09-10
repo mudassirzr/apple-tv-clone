@@ -15,9 +15,6 @@ export default function ScrollSpy() {
   const { ref: insightRef, inView: insightInView } = useInView({
     threshold: 0.8,
   });
-  const { ref: singleBlocksRef, inView: singleBlocksInView } = useInView({
-    threshold: 0,
-  });
   const fitnessAppRef =  useRef()
   const checkScrollPosition= (e) =>{
     const top = fitnessAppRef?.current?.getBoundingClientRect()?.top
@@ -25,10 +22,12 @@ export default function ScrollSpy() {
     
     if(bottom>=top && bottom-top<=displayRef?.current.offsetHeight){
         const newHeight = displayRef?.current.offsetHeight-(bottom-top)
-        // insightDisplayRef.current.style.setProperty("transform", `matrix(1,0,0,${Math.abs((bottom-top)/10000)},0,0)`)
         insightDisplayRef.current.style.setProperty("height", `${Math.trunc(newHeight)}px`)
+    } else if (top>bottom && insightDisplayRef.current.style.height!=514){
+        insightDisplayRef.current.style.setProperty("height", `514px`)
+    } else if(bottom-top>displayRef?.current.offsetHeight && insightDisplayRef.current.style.height!=0){
+        insightDisplayRef.current.style.setProperty("height", `${0}px`)
     }
-    
   }
   useEffect(() => {
     window.addEventListener('scroll', checkScrollPosition, { passive: true });
@@ -145,7 +144,6 @@ export default function ScrollSpy() {
   ];
   const displayRef = useRef()
   const insightDisplayRef = useRef()
-  console.log(insightInView , !singleBlocksInView , !tvPlusInView)
   return (
     <section className="relative pb-28">
       <div className="absolute right-0 top-0 h-full">
@@ -223,7 +221,7 @@ export default function ScrollSpy() {
           )}
         </div>
       </Container>
-      <div ref={singleBlocksRef}>
+      <div>
       {Children.toArray(singleBlocks.map(({ text, image, ref, backgroundClass = "" }, i) => {
         return (
           <div ref={ref} className={`w-full py-56 ${backgroundClass}`}>

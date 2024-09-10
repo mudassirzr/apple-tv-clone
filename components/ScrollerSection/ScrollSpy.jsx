@@ -22,7 +22,7 @@ export default function ScrollSpy() {
     
     if(bottom>=top && bottom-top<=displayRef?.current.offsetHeight){
         const newHeight = displayRef?.current.offsetHeight-(bottom-top)
-        insightDisplayRef.current.style.setProperty("height", `${Math.trunc(newHeight)-5}px`)
+        insightDisplayRef.current.style.setProperty("height", `${Math.trunc(newHeight)-4}px`)
     } else if (top>bottom && insightDisplayRef.current.style.height!=514){
         insightDisplayRef.current.style.setProperty("height", `514px`)
     } else if(bottom-top>displayRef?.current.offsetHeight && insightDisplayRef.current.style.height!=0){

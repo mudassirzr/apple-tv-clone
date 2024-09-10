@@ -27,6 +27,12 @@ export default function RootLayout({ children }) {
           href="/favicon.svg"
           type="image/svg"
         />
+        <link
+          rel="apple-icon"
+          href="/favicon.svg"
+          type="image/svg"
+        />
+        <title>Apple TV 4k - Apple</title>
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white relative overflow-y-auto overflow-x-hidden`}

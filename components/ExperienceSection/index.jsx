@@ -4,7 +4,7 @@ import HorizontalParallax from "./HorizontalParallax";
 
 export default function ExperienceSection() {
   return (
-    <section className="py-44 bg-white relative z-0">
+    <section className="pt-44 pb-28 bg-white relative z-0">
       <Container>
         <span className="text-2xl font-semibold text-center block mb-2">
           Experience
@@ -13,7 +13,7 @@ export default function ExperienceSection() {
           {" "}
           Channeling the best of TV. <br /> And the best of Apple.
         </h2>
-        <p className="text-xl px-32 leading-tight text-textGray font-bold text-center mb-10">
+        <p className="para-text text-center px-32">
           Discover award-winning Apple&nbsp;Originals series and films — with
           other favorites on Disney+, Prime&nbsp;Video, Netflix, Max, ESPN,
           <sup>

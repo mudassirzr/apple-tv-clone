@@ -6,12 +6,12 @@ import SecondaryHeader from "@/components/SecondaryHeader";
 
 export default function AppleTvPage({ props }) {
   return (
-    <div>
+    <main>
       <Header />
       <SecondaryHeader />
       <Hero />
       <ExperienceSection />
       <ScrollerSection />
-    </div>
+    </main>
   );
 }

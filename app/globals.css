@@ -18,9 +18,13 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  scroll-behavior: smooth;
 }
 
 @layer utilities {
+  .bg-appleGreen {
+    background: radial-gradient(at top right,#0ae8b5,#00bb53);
+  }
   .text-balance {
     text-wrap: balance;
   }
@@ -43,5 +47,8 @@ body {
   }
   .para-text {
     @apply text-xl leading-tight text-textGray font-bold mb-10;
+  }
+  .blocks-text {
+    @apply text-xl leading-tight font-bold;
   }
 }

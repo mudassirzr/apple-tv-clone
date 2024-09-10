@@ -1,8 +1,8 @@
 "use client";
 import Image from "next/image";
 import Container from "../layout/Container";
-import { Children, Fragment } from "react";
-import { useInView } from "react-intersection-observer";
+import { Children, Fragment, useEffect, useRef } from "react";
+import { useInView } from "react-intersection-observer"
 
 export default function ScrollSpy() {
   const { ref: tvAppRef, inView: tvAppInView } = useInView({
@@ -15,6 +15,28 @@ export default function ScrollSpy() {
   const { ref: insightRef, inView: insightInView } = useInView({
     threshold: 0.8,
   });
+  const { ref: singleBlocksRef, inView: singleBlocksInView } = useInView({
+    threshold: 0,
+  });
+  const fitnessAppRef =  useRef()
+  const checkScrollPosition= (e) =>{
+    const top = fitnessAppRef?.current?.getBoundingClientRect()?.top
+    const bottom = displayRef?.current?.getBoundingClientRect()?.bottom
+    
+    if(bottom>=top && bottom-top<=displayRef?.current.offsetHeight){
+        const newHeight = displayRef?.current.offsetHeight-(bottom-top)
+        // insightDisplayRef.current.style.setProperty("transform", `matrix(1,0,0,${Math.abs((bottom-top)/10000)},0,0)`)
+        insightDisplayRef.current.style.setProperty("height", `${Math.trunc(newHeight)}px`)
+    }
+    
+  }
+  useEffect(() => {
+    window.addEventListener('scroll', checkScrollPosition, { passive: true });
+
+    return () => {
+        window.removeEventListener('scroll', checkScrollPosition);
+    };
+}, []);
   const blocks = [
     {
       text: (
@@ -96,9 +118,86 @@ export default function ScrollSpy() {
       ref: insightRef,
     },
   ];
-  console.log(tvAppInView , tvPlusInView , insightInView, "dkdkdk");
+  const singleBlocks = [
+    {
+      text: (
+        <p className="text-[#afe9c4] blocks-text">
+          <strong className="text-white">Apple&nbsp;Fitness+.</strong>
+          Tap into the world’s largest library of 4K fitness and wellness
+          content.
+          <sup>
+            <a href="#">4</a>
+          </sup>{" "}
+          From HIIT to Yoga, there’s something for everyone. Get custom workout
+          and meditation plans automatically built for you. And supercharge your
+          experience with real-time, personalized metrics from Apple&nbsp;Watch.
+        </p>
+      ),
+      backgroundClass: "bg-appleGreen",
+    ref: fitnessAppRef,
+      image: {
+        src: "/img/apple-fitness-app.png",
+        height: 73,
+        width: 120,
+        alt: "Apple Fitness Logo",
+      },
+    },
+  ];
+  const displayRef = useRef()
+  const insightDisplayRef = useRef()
+  console.log(insightInView , !singleBlocksInView , !tvPlusInView)
   return (
-    <section className="relative h-max">
+    <section className="relative pb-28">
+      <div className="absolute right-0 top-0 h-full">
+        <div className="relative h-full">
+          <div ref = {displayRef} className="sticky right-0 top-[calc(50%-259px)]">
+            <div className="relative w-[906px] h-[518px] border-l-[6px] border-t-[6px] border-b-[6px] border-black">
+              <video
+                className={`absolute top-0 right-0 z-[6] transition-opacity duration-500 ${
+                  !tvAppInView || tvPlusInView || insightInView
+                    ? "opacity-0"
+                    : "opacity-100"
+                }`}
+                loop
+                muted
+                autoPlay
+                src="/video/apple-home.mp4"
+                width={906}
+                height={514}
+              />
+              <video
+                className={`absolute top-0 right-0 z-[5] transition-opacity duration-500 ${
+                    tvPlusInView && !insightInView ? "opacity-100" : "opacity-0"
+                }`}
+                loop
+                muted
+                autoPlay
+                src="/video/apple-live.mp4"
+                width={906}
+                height={514}
+              />
+              <Image
+                className={`absolute top-0 right-0 z-[4] transition-opacity duration-500 origin-bottom object-cover object-top max-h-full opacity-100
+                }`}
+                ref={insightDisplayRef}
+                src="/img/apple-insight.jpg"
+                alt="Apple Insights"
+                width={906}
+                height={514}
+              />
+              <video
+                className={`absolute top-0 right-0 z-[3] transition-opacity duration-500`}
+                loop
+                muted
+                autoPlay
+                src="/video/apple-fitness.mp4"
+                width={906}
+                height={514}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
       <Container>
         <div className="max-w-[320px]">
           {Children.toArray(
@@ -123,49 +222,33 @@ export default function ScrollSpy() {
             })
           )}
         </div>
-        <div className="absolute right-0 top-0 h-full">
-          <div className="relative h-full">
-            <div className="sticky right-0 top-[calc(50%-259px)]">
-              <div className="relative w-[906px] h-[518px] border-l-[6px] border-t-[6px] border-b-[6px] border-black">
-                {
-                  <video
-                    className={`absolute top-0 right-0 z-[3] transition-opacity duration-500 ${
-                      !tvAppInView || tvPlusInView || insightInView
-                        ? "opacity-0"
-                        : "opacity-100"
-                    }`}
-                    loop
-                    muted
-                    autoPlay
-                    src="/video/apple-home.mp4"
-                    width={906}
-                    height={514}
-                  />
-                }
-                <video
-                  className={`absolute top-0 right-0 z-[2] transition-opacity duration-500 ${
-                    insightInView ? "opacity-0" : "opacity-100"
-                  }`}
-                  loop
-                  muted
-                  autoPlay
-                  src="/video/apple-live.mp4"
-                  width={906}
-                  height={514}
-                />
-                <Image
-                  className={`absolute top-0 right-0 z-[1] transition-opacity duration-500 ${
-                    insightInView ? "opacity-100" : "opacity-0"
-                  }`}
-                  src="/img/apple-insight.jpg"
-                  width={906}
-                  height={514}
-                />
-              </div>
-            </div>
-          </div>
-        </div>
       </Container>
+      <div ref={singleBlocksRef}>
+      {singleBlocks.map(({ text, image, ref, backgroundClass = "" }, i) => {
+        return (
+          <div ref={ref} className={`w-full py-56 ${backgroundClass}`}>
+            <Container>
+              <div className="max-w-[320px]">
+                <div
+                  //   className={`${[0, 1].indexOf(i) == -1 ? "mt-96" : ""}`}
+                >
+                  {image ? (
+                    <Image
+                      className="mb-10"
+                      height={image?.height}
+                      width={image?.width}
+                      src={image?.src}
+                      alt={image?.alt}
+                    />
+                  ) : null}
+                  {text}
+                </div>
+              </div>
+            </Container>
+          </div>
+        );
+      })}
+      </div>
     </section>
   );
 }

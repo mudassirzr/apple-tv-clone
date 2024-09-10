@@ -25,7 +25,7 @@ export default function ExperienceSection() {
           more on Apple&nbsp;TV&nbsp;4K than just&nbsp;TV.
         </p>
       </Container>
-      {/* <HorizontalParallax /> */}
+      <HorizontalParallax />
     </section>
   );
 }

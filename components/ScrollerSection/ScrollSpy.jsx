@@ -224,7 +224,7 @@ export default function ScrollSpy() {
         </div>
       </Container>
       <div ref={singleBlocksRef}>
-      {singleBlocks.map(({ text, image, ref, backgroundClass = "" }, i) => {
+      {Children.toArray(singleBlocks.map(({ text, image, ref, backgroundClass = "" }, i) => {
         return (
           <div ref={ref} className={`w-full py-56 ${backgroundClass}`}>
             <Container>
@@ -247,7 +247,7 @@ export default function ScrollSpy() {
             </Container>
           </div>
         );
-      })}
+      }))}
       </div>
     </section>
   );

@@ -19,7 +19,7 @@ export default function HeroText({headlineRef, textColor='text-white'}) {
         height={31}
         src="/img/apple-tv-4k-dark.png"
       />
-      <h1 className="font-semibold leading-tight md:font-extrabold text-4xl px-20 md:px-0 md:text-7.5xl md:mb-10 md:leading-[1.05]">
+      <h1 className="font-semibold leading-tight md:font-extrabold text-4xl px-20 md:px-0 lg:text-7.5xl md:mb-10 md:leading-[1.05]">
         The Ultimate <br /> TV experience is calling.
       </h1>
       <span className="hidden md:block text-xl">LEGO© STAR Wars™ Castaways</span>

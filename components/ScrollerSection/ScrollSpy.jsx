@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Container from "../layout/Container";
 import { Children, Fragment, useEffect, useRef } from "react";
-import { useInView } from "react-intersection-observer"
+import { useInView } from "react-intersection-observer";
 
 export default function ScrollSpy() {
   const { ref: tvAppRef, inView: tvAppInView } = useInView({
@@ -15,27 +15,33 @@ export default function ScrollSpy() {
   const { ref: insightRef, inView: insightInView } = useInView({
     threshold: 0.8,
   });
-  const fitnessAppRef =  useRef()
-  const checkScrollPosition= (e) =>{
-    const top = fitnessAppRef?.current?.getBoundingClientRect()?.top
-    const bottom = displayRef?.current?.getBoundingClientRect()?.bottom
-    
-    if(bottom>=top && bottom-top<=displayRef?.current.offsetHeight){
-        const newHeight = displayRef?.current.offsetHeight-(bottom-top)
-        insightDisplayRef.current.style.setProperty("height", `${Math.trunc(newHeight)-4}px`)
-    } else if (top>bottom && insightDisplayRef.current.style.height!=514){
-        insightDisplayRef.current.style.setProperty("height", `514px`)
-    } else if(bottom-top>displayRef?.current.offsetHeight && insightDisplayRef.current.style.height!=0){
-        insightDisplayRef.current.style.setProperty("height", `${0}px`)
+  const fitnessAppRef = useRef();
+  const checkScrollPosition = (e) => {
+    const top = fitnessAppRef?.current?.getBoundingClientRect()?.top;
+    const bottom = displayRef?.current?.getBoundingClientRect()?.bottom;
+
+    if (bottom >= top && bottom - top <= displayRef?.current.offsetHeight) {
+      const newHeight = displayRef?.current.offsetHeight - (bottom - top);
+      insightDisplayRef.current.style.setProperty(
+        "height",
+        `${Math.trunc(newHeight) - 4}px`
+      );
+    } else if (top > bottom && insightDisplayRef.current.style.height != 514) {
+      insightDisplayRef.current.style.setProperty("height", `514px`);
+    } else if (
+      bottom - top > displayRef?.current.offsetHeight &&
+      insightDisplayRef.current.style.height != 0
+    ) {
+      insightDisplayRef.current.style.setProperty("height", `${0}px`);
     }
-  }
+  };
   useEffect(() => {
-    window.addEventListener('scroll', checkScrollPosition, { passive: true });
+    window.addEventListener("scroll", checkScrollPosition, { passive: true });
 
     return () => {
-        window.removeEventListener('scroll', checkScrollPosition);
+      window.removeEventListener("scroll", checkScrollPosition);
     };
-}, []);
+  }, []);
   const blocks = [
     {
       text: (
@@ -54,6 +60,12 @@ export default function ScrollSpy() {
         height: 73,
         width: 120,
         alt: "Apple TV Logo",
+      },
+      mobileImage: {
+        src: "/img/apple-tv-mobile.jpg",
+        height: 240,
+        width: 426,
+        alt: "Apple TV Image",
       },
     },
     {
@@ -90,6 +102,12 @@ export default function ScrollSpy() {
         width: 119,
         alt: "Apple TV Plus Logo",
       },
+      mobileImage: {
+        src: "/img/apple-tv-plus-mobile.jpg",
+        height: 240,
+        width: 426,
+        alt: "Apple TV Plus",
+      },
     },
     {
       text: (
@@ -115,6 +133,12 @@ export default function ScrollSpy() {
         </>
       ),
       ref: insightRef,
+      mobileImage: {
+        src: "/img/apple-insight-mobile.jpg",
+        height: 240,
+        width: 426,
+        alt: "Apple Insights",
+      },
     },
   ];
   const singleBlocks = [
@@ -133,23 +157,32 @@ export default function ScrollSpy() {
         </p>
       ),
       backgroundClass: "bg-appleGreen",
-    ref: fitnessAppRef,
+      ref: fitnessAppRef,
       image: {
         src: "/img/apple-fitness-app.png",
         height: 73,
         width: 120,
         alt: "Apple Fitness Logo",
       },
+      mobileImage: {
+        src: "/img/apple-fitness-mobile.jpg",
+        height: 240,
+        width: 426,
+        alt: "Apple Fitness Logo",
+      },
     },
   ];
-  const displayRef = useRef()
-  const insightDisplayRef = useRef()
+  const displayRef = useRef();
+  const insightDisplayRef = useRef();
   return (
     <section className="relative pb-28">
       <div className="absolute right-0 top-0 h-full">
         <div className="relative h-full">
-          <div ref = {displayRef} className="sticky right-0 top-[calc(50%-259px)]">
-            <div className="relative w-[906px] h-[518px] border-l-[6px] border-t-[6px] border-b-[6px] border-black">
+          <div
+            ref={displayRef}
+            className="hidden md:block sticky right-0 top-[calc(50%-259px)]"
+          >
+            <div className="relative md:w-[500px] md:h-[290px] lg:w-[906px] lg:h-[518px] border-l-[6px] border-t-[6px] border-b-[6px] border-black">
               <video
                 className={`absolute top-0 right-0 z-[6] transition-opacity duration-500 ${
                   !tvAppInView || tvPlusInView || insightInView
@@ -165,7 +198,7 @@ export default function ScrollSpy() {
               />
               <video
                 className={`absolute top-0 right-0 z-[5] transition-opacity duration-500 ${
-                    tvPlusInView && !insightInView ? "opacity-100" : "opacity-0"
+                  tvPlusInView && !insightInView ? "opacity-100" : "opacity-0"
                 }`}
                 loop
                 muted
@@ -199,12 +232,23 @@ export default function ScrollSpy() {
       <Container>
         <div className="max-w-[320px]">
           {Children.toArray(
-            blocks.map(({ text, image, ref }, i) => {
+            blocks.map(({ text, image, mobileImage, ref }, i) => {
               return (
                 <div
                   ref={ref}
-                  className={`${[0, 1].indexOf(i) == -1 ? "mt-96" : ""}`}
+                  className={`${
+                    [0, 1].indexOf(i) == -1 ? "mt-48 md:mt-96" : ""
+                  }`}
                 >
+                  {mobileImage ? (
+                    <Image
+                      className="mb-10 md:hidden block min-w-fit"
+                      height={mobileImage?.height}
+                      width={mobileImage?.width}
+                      src={mobileImage?.src}
+                      alt={mobileImage?.alt}
+                    />
+                  ) : null}
                   {image ? (
                     <Image
                       className="mb-10"
@@ -222,30 +266,43 @@ export default function ScrollSpy() {
         </div>
       </Container>
       <div>
-      {Children.toArray(singleBlocks.map(({ text, image, ref, backgroundClass = "" }, i) => {
-        return (
-          <div ref={ref} className={`w-full py-56 ${backgroundClass}`}>
-            <Container>
-              <div className="max-w-[320px]">
-                <div
-                  //   className={`${[0, 1].indexOf(i) == -1 ? "mt-96" : ""}`}
-                >
-                  {image ? (
-                    <Image
-                      className="mb-10"
-                      height={image?.height}
-                      width={image?.width}
-                      src={image?.src}
-                      alt={image?.alt}
-                    />
-                  ) : null}
-                  {text}
+        {Children.toArray(
+          singleBlocks.map(
+            ({ text, image, mobileImage, ref, backgroundClass = "" }, i) => {
+              return (
+                <div ref={ref} className={`w-full py-28 md:py-56 ${backgroundClass}`}>
+                  <Container>
+                    <div className="max-w-[320px]">
+                      <div
+                      //   className={`${[0, 1].indexOf(i) == -1 ? "mt-96" : ""}`}
+                      >
+                        {mobileImage ? (
+                          <Image
+                            className="mb-10 md:hidden block min-w-fit"
+                            height={mobileImage?.height}
+                            width={mobileImage?.width}
+                            src={mobileImage?.src}
+                            alt={mobileImage?.alt}
+                          />
+                        ) : null}
+                        {image ? (
+                          <Image
+                            className="mb-10"
+                            height={image?.height}
+                            width={image?.width}
+                            src={image?.src}
+                            alt={image?.alt}
+                          />
+                        ) : null}
+                        {text}
+                      </div>
+                    </div>
+                  </Container>
                 </div>
-              </div>
-            </Container>
-          </div>
-        );
-      }))}
+              );
+            }
+          )
+        )}
       </div>
     </section>
   );

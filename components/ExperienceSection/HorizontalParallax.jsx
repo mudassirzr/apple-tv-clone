@@ -42,7 +42,7 @@ export default function HorizontalParallax() {
               row.map((image) => {
                 return (
                   <Image
-                    className="mx-2 rounded-md"
+                    className="mx-2 rounded-md w-[172.5px] h-auto md:w-[345px] md:h-[195px]"
                     width={345}
                     height={195}
                     src={image?.url}

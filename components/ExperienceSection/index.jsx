@@ -6,14 +6,14 @@ export default function ExperienceSection() {
   return (
     <section className="pt-44 pb-28 bg-white relative z-0">
       <Container>
-        <span className="text-2xl font-semibold text-center block mb-2">
+        <span className="text-xl md:text-2xl font-semibold md:text-center block mb-2">
           Experience
         </span>
-        <h2 className="text-7xl leading-tight font-semibold text-center mb-5">
+        <h2 className="text-3xl md:text-7xl leading-tight font-semibold md:text-center mb-5">
           {" "}
           Channeling the best of TV. <br /> And the best of Apple.
         </h2>
-        <p className="para-text text-center px-32">
+        <p className="para-text md:text-center md:px-32">
           Discover award-winning Apple&nbsp;Originals series and films — with
           other favorites on Disney+, Prime&nbsp;Video, Netflix, Max, ESPN,
           <sup>

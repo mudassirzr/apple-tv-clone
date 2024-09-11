@@ -5,12 +5,14 @@ import { useCallback, useRef } from "react";
 import { useParallax } from "react-scroll-parallax";
 import HeroText from "./HeroText";
 import HeroVideoImage from "./HeroVideoImage";
+import AppleTvPage from "@/app/apple-tv-4k/page";
+import AppleTvText from "./AppleTvText";
 export default function Hero() {
   const textRef = useRef();
   const headlineRef = useRef();
   const imageRef = useRef();
   const buttonRef = useRef();
-  const wrapperRef = useRef
+  const wrapperRef = useRef;
   const { ref } = useParallax({
     speed: -5,
     scale: [1.43, 0.55],
@@ -20,18 +22,18 @@ export default function Hero() {
         // set progress to CSS variable
         const pg = progress * 100;
         if (pg > 95) {
-          textRef.current.style.setProperty("opacity", progress.toFixed(1));
+          textRef?.current?.style?.setProperty("opacity", progress.toFixed(1));
         } else {
           if (progress * 100 > 71) {
             imageRef.current.style.setProperty("opacity", 0);
-            buttonRef.current.classList.add('hidden')
-            buttonRef.current.classList.remove('fixed')
+            buttonRef.current.classList.add("hidden");
+            buttonRef.current.classList.remove("fixed");
           } else {
             imageRef.current.style.setProperty("opacity", 1);
-            buttonRef.current.classList.add('fixed')
-            buttonRef.current.classList.remove('hidden')
+            buttonRef.current.classList.add("fixed");
+            buttonRef.current.classList.remove("hidden");
           }
-          textRef.current.style.setProperty("opacity", 0);
+          textRef?.current?.style?.setProperty("opacity", 0);
         }
         if (pg > 40) {
           headlineRef?.current?.style.setProperty("display", "none");
@@ -53,14 +55,14 @@ export default function Hero() {
     }
   }, [imageRef, buttonRef]);
   return (
-    <section className="relative h-[3200px] bg-[#f5f5f7] z-0 -mb-[500px]">
+    <section className="relative md:h-[3200px] bg-[#f5f5f7] z-0 md:-mb-[500px]">
       <div
         id="parallax-hero"
-        className="w-full sticky top-[96px]"
+        className="w-full sticky top-[96px] hidden md:block"
         ref={ref}
       >
         <div className="relative w-full border-solid border-8 border-black h-svh overflow-y-hidden">
-          <div className="text-white absolute inset-0 bg-black bg-opacity-20 p-16 text-center flex items-end justify-center">
+          <div className="hidden text-white absolute inset-0 bg-black bg-opacity-20 p-16 text-center md:flex md:items-end md:justify-center">
             <HeroText headlineRef={headlineRef} />
           </div>
           <div className="w-full z-[2]">
@@ -73,37 +75,24 @@ export default function Hero() {
           height={378}
           src="/img/hero-tv-box.png"
         />
-        {/* <Container> */}
-        <p
-          ref={textRef}
-          id="parallax-text"
-          className="text-4xl text-[#86868b] font-semibold text-center px-32 mt-24 transition-all"
-        >
-          Apple&nbsp;TV&nbsp;4K unites your favorite Apple services with all
-          your streaming apps in our best-ever picture and sound quality —
-          thanks to the blazing‑fast A15&nbsp;Bionic chip. Enjoy a FaceTime
-          experience on TV
-          <sup>
-            <a>1</a>
-          </sup>
-          that brings your friends and family into your living room — and onto
-          the biggest screen in your home. And with seamless interaction with
-          all your devices and smart home accessories,
-          <sup>
-            <a>2</a>
-          </sup>
-          it’s everything you love about Apple — at its cinematic best.
-          <br />
-          <br />
-          <span>Starting at $129</span>
-        </p>
+        <AppleTvText textRef={textRef} />
+      </div>
+      <div className="md:hidden flex flex-col text-center items-center justify-center overflow-hidden pb-16 mt-8">
+        <Image
+          className="max-w-[670px] border-[6px] border-solid border-black"
+          width={670}
+          height={377}
+          src="/img/hero-img.png"
+        />
+        <HeroText headlineRef={null} textColor="text-black" />
+        <AppleTvText textRef={null} />
       </div>
       <button
         ref={buttonRef}
         onClick={pausePlayVideo}
-        className="pause-icon bg-white fixed bottom-8 right-8 h-11 w-11 rounded-full flex items-center justify-center bg-opacity-80 backdrop-blur-lg backdrop-saturate-[180%]"
+        className="pause-icon bg-white bottom-8 right-8 h-11 w-11 rounded-full hidden fixed md:flex md:items-center md:justify-center bg-opacity-80 backdrop-blur-lg backdrop-saturate-[180%]"
       ></button>
-      <div className="h-[1100px]" />
+      <div className="md:h-[1100px]" />
     </section>
   );
 }

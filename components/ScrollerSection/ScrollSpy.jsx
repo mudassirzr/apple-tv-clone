@@ -182,7 +182,7 @@ export default function ScrollSpy() {
             ref={displayRef}
             className="hidden md:block sticky right-0 top-[calc(50%-259px)]"
           >
-            <div className="relative md:w-[500px] md:h-[290px] lg:w-[906px] lg:h-[518px] border-l-[6px] border-t-[6px] border-b-[6px] border-black">
+            <div className="relative md:w-[500px] md:h-[290px] xl:w-[650px] xl:h-[374px] 2xl:w-[906px] 2xl:h-[518px] border-l-[6px] border-t-[6px] border-b-[6px] border-black">
               <video
                 className={`absolute top-0 right-0 z-[6] transition-opacity duration-500 ${
                   !tvAppInView || tvPlusInView || insightInView

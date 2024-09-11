@@ -10,8 +10,7 @@ export default function Hero() {
   const textRef = useRef();
   const headlineRef = useRef();
   const imageRef = useRef();
-  const buttonRef = useRef();
-  const wrapperRef = useRef;
+  const buttonRef = useRef()
   const { ref } = useParallax({
     speed: -5,
     scale: [1.43, 0.55],

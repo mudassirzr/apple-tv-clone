@@ -17,7 +17,9 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 ## Project Overview
 
 Live URL: [https://apple-tv-clone.mudasir.live](https://apple-tv-clone.mudasir.live)
+
 Github Repository URL: [https://github.com/mudassirzr/apple-tv-clone](https://github.com/mudassirzr/apple-tv-clone)
+
 Technologies and Libraries: React, Tailwind, react-scroll-parallax, react-intersection-observer
 
 Frameworks Used: Next.js

@@ -2,7 +2,7 @@ export default function AppleTvText({ textRef }) {
   return (
     <p
       ref={textRef}
-      className="text-lg text-left px-16 md:text-4xl text-[#86868b] font-semibold md:text-center mx:px-32 md:mt-24 transition-all"
+      className="text-lg text-left px-4 sm:px-16 md:text-4xl text-[#86868b] font-semibold md:text-center mx:px-32 md:mt-24 transition-all"
     >
       Apple&nbsp;TV&nbsp;4K unites your favorite Apple services with all your
       streaming apps in our best-ever picture and sound quality — thanks to the

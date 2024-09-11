@@ -229,7 +229,7 @@ export default function ScrollSpy() {
           </div>
         </div>
       </div>
-      <Container>
+      <Container className="overflow-x-hidden">
         <div className="max-w-[320px]">
           {Children.toArray(
             blocks.map(({ text, image, mobileImage, ref }, i) => {

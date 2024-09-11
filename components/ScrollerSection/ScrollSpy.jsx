@@ -271,7 +271,7 @@ export default function ScrollSpy() {
             ({ text, image, mobileImage, ref, backgroundClass = "" }, i) => {
               return (
                 <div ref={ref} className={`w-full py-28 md:py-56 ${backgroundClass}`}>
-                  <Container>
+                  <Container className="overflow-x-hidden">
                     <div className="max-w-[320px]">
                       <div
                       //   className={`${[0, 1].indexOf(i) == -1 ? "mt-96" : ""}`}

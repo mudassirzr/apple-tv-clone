@@ -19,12 +19,20 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 Live URL: [https://apple-tv-clone.mudasir.live](https://apple-tv-clone.mudasir.live)
 Github Repository URL: [https://github.com/mudassirzr/apple-tv-clone](https://github.com/mudassirzr/apple-tv-clone)
 Technologies and Libraries: React, Tailwind, react-scroll-parallax, react-intersection-observer
+
 Frameworks Used: Next.js
-Practices Followed: React component reusability,
+
+Practices Followed: React component reusability
+
 Project Architecture: React Microfrontends Component Architecture
+
 Project Performance Performance Measurement: NA
+
 Performance Optimization: NA
+
 Testing Methodologies: No test cases written
+
 Known Issues: Hero animation not working as expected in some versions of Chrome (known issue with Next.js + react-parallax-scroll library listed here [https://github.com/vercel/next.js/issues/55794](https://github.com/vercel/next.js/issues/55794))
+
 Known issue fix: Can be fixed by downgrading Next.js to 13.4.1 as listed [here](https://github.com/jscottsmith/react-scroll-parallax/issues/221#issuecomment-1731196979)
 

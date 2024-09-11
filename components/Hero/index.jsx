@@ -5,7 +5,6 @@ import { useCallback, useRef } from "react";
 import { useParallax } from "react-scroll-parallax";
 import HeroText from "./HeroText";
 import HeroVideoImage from "./HeroVideoImage";
-import AppleTvPage from "@/app/apple-tv-4k/page";
 import AppleTvText from "./AppleTvText";
 export default function Hero() {
   const textRef = useRef();

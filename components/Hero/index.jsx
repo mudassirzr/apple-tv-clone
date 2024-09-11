@@ -27,10 +27,10 @@ export default function Hero() {
           if (progress * 100 > 71) {
             imageRef.current.style.setProperty("opacity", 0);
             buttonRef.current.classList.add("hidden");
-            buttonRef.current.classList.remove("fixed");
+            buttonRef.current.classList.remove("md:flex");
           } else {
             imageRef.current.style.setProperty("opacity", 1);
-            buttonRef.current.classList.add("fixed");
+            buttonRef.current.classList.add("md:flex");
             buttonRef.current.classList.remove("hidden");
           }
           textRef?.current?.style?.setProperty("opacity", 0);

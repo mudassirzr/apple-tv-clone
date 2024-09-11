@@ -38,3 +38,4 @@ Known Issues: Hero animation not working as expected in some versions of Chrome 
 
 Known issue fix: Can be fixed by downgrading Next.js to 13.4.1 as listed [here](https://github.com/jscottsmith/react-scroll-parallax/issues/221#issuecomment-1731196979)
 
+Hero Section Only (without scroll issue): [https://apple-tv-clone.mudasir.live/hero-only](https://apple-tv-clone.mudasir.live/hero-only)
